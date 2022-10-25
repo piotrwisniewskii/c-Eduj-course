@@ -6,28 +6,29 @@ using System.Net.Security;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace EDUJ;
 public class Program
 {
-
     static void Main(string[] args)
     {
-    
-        CalcWithText(delegate (int a, int b)
+        int[] arr = { 2, 5, -10, 7, 0, 1, 2, 1, 9, -5 };
+
+        arr = arr.Where(x => x > 0).Select(x => x * 2).ToArray();
+
+        foreach (var item in arr)
         {
-            return a + b;
-        }, 2, 5); 
+            Console.WriteLine(item);
+        }
 
-        CalcWithText((x, y) =>  x + y, 2, 5);
-    }
-
-    static void CalcWithText(Func<int, int, int> func, int a, int b )
-    {
-        int res = func.Invoke(2, 5);
-        Console.WriteLine($"Wynik = {res}");
-    }
-
+        Console.WriteLine();
+        Console.WriteLine($"First = {arr.FirstOrDefault()}"); // pierwsza lub domyślna wartość
+        Console.WriteLine($"Sum ={arr.Sum()}"); // suma
+        Console.WriteLine($"Avg = {arr.Average()}"); // srednia 
+        Console.WriteLine($"Max = {arr.Max()}");
+        Console.WriteLine($"Min = {arr.Min()}");
     
+    }
 }
 
 
