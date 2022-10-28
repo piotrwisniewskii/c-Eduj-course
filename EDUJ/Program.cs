@@ -12,22 +12,29 @@ public class Program
 {
     static void Main(string[] args)
     {
-        int[] arr = { 2, 5, -10, 7, 0, 1, 2, 1, 9, -5 };
-
-        arr = arr.Where(x => x > 0).Select(x => x * 2).ToArray();
-
-        foreach (var item in arr)
+        try
         {
-            Console.WriteLine(item);
-        }
 
-        Console.WriteLine();
-        Console.WriteLine($"First = {arr.FirstOrDefault()}"); // pierwsza lub domyślna wartość
-        Console.WriteLine($"Sum ={arr.Sum()}"); // suma
-        Console.WriteLine($"Avg = {arr.Average()}"); // srednia 
-        Console.WriteLine($"Max = {arr.Max()}");
-        Console.WriteLine($"Min = {arr.Min()}");
-    
+            StreamWriter sw = new StreamWriter("../../../file.txt", true);
+            sw.WriteLine(Console.ReadLine());
+            sw.Close();
+
+            Console.WriteLine("\nZawartość pliku:");
+            StreamReader sr = new StreamReader("../../../file.txt");
+
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+            }
+
+            sr.Close();
+        }
+        catch (Exception ex)
+        { 
+            Console.WriteLine(ex.Message);
+        }
+        
     }
 }
 
