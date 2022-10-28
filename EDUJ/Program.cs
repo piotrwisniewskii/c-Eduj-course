@@ -12,29 +12,18 @@ public class Program
 {
     static void Main(string[] args)
     {
-        try
+        Thread t1 = new Thread(new ParameterizedThreadStart(LongMethod));
+        Thread t2 = new Thread(new ParameterizedThreadStart(LongMethod));
+        t1.Start(50);
+        t2.Start(50);
+    }
+
+    static void LongMethod(object n)
+    {
+        for (int i = 0; i < (int)n; i++)
         {
-
-            StreamWriter sw = new StreamWriter("../../../file.txt", true);
-            sw.WriteLine(Console.ReadLine());
-            sw.Close();
-
-            Console.WriteLine("\nZawartość pliku:");
-            StreamReader sr = new StreamReader("../../../file.txt");
-
-            string line;
-            while ((line = sr.ReadLine()) != null)
-            {
-                Console.WriteLine(line);
-            }
-
-            sr.Close();
+            Console.WriteLine($" ID {Thread.CurrentThread.ManagedThreadId}: {i}");
         }
-        catch (Exception ex)
-        { 
-            Console.WriteLine(ex.Message);
-        }
-        
     }
 }
 
