@@ -8,31 +8,25 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Dictionary<int, string> dictionary = new Dictionary<int, string>();
-        dictionary.Add(1, "Poniedziałek");
-        dictionary.Add(2, "Wtorek");
-        dictionary.Add(3, "środa");
-        dictionary.Add(0, "środa");
-        dictionary.TryAdd(3, "Środa");
+        Queue<string> queue = new Queue<string>();
+        queue.Enqueue("Poniedziałek");
+        queue.Enqueue("Wtorek");
+        queue.Enqueue("Środa");
 
-        //Console.WriteLine(dictionary[1]);
-        foreach (var item in dictionary)
+        foreach (var item in queue)
         {
-            Console.WriteLine($"{item.Key} - {item.Value}");
+            Console.WriteLine(item);
         }
 
-        SortedDictionary<int, string> sortedDictionary = new SortedDictionary<int, string>();
-
-        sortedDictionary.Add(5, "Piątek");
-        sortedDictionary.Add(2, "Wtorek");
-        sortedDictionary.Add(4, "Poniedziałek");
-        sortedDictionary.Add(1, "Poniedziałek");
-
-        foreach (var item in sortedDictionary)
+        Console.WriteLine($"\n{queue.Count}");
+        Console.WriteLine(queue.First());
+        Console.WriteLine(queue.Dequeue());
+        Console.WriteLine(queue.Count());
+        foreach (var item in queue)
         {
-            Console.WriteLine($"{item.Key} - {item.Value}");
+            Console.WriteLine(item);
         }
-
+        Console.WriteLine(queue.Peek());
     }
 }
 
