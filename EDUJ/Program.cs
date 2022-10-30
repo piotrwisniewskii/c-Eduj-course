@@ -8,25 +8,24 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Queue<string> queue = new Queue<string>();
-        queue.Enqueue("Poniedziałek");
-        queue.Enqueue("Wtorek");
-        queue.Enqueue("Środa");
+        Stack<int> stack = new Stack<int>();
+        stack.Push(1);
+        stack.Push(2);
+        stack.Push(3);
+        stack.Push(4);
 
-        foreach (var item in queue)
+        foreach (var item in stack)
         {
             Console.WriteLine(item);
         }
-
-        Console.WriteLine($"\n{queue.Count}");
-        Console.WriteLine(queue.First());
-        Console.WriteLine(queue.Dequeue());
-        Console.WriteLine(queue.Count());
-        foreach (var item in queue)
+        Console.WriteLine($"Ilosc " + stack.Count());
+        stack.Pop();
+        Console.WriteLine();
+        foreach (var item in stack)
         {
             Console.WriteLine(item);
         }
-        Console.WriteLine(queue.Peek());
+        Console.WriteLine($"Ilosc " + stack.Count());
     }
 }
 
